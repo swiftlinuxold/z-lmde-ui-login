@@ -36,4 +36,11 @@ os.system('apt-get install -y lightdm')
 # Configure LightDM
 import shutil
 
+def remove_file (filename):
+    if (os.path.exists(filename)):
+        os.remove(filename)
+
+# Remove extra sessions
+remove_file ('/usr/share/xsessions/icewm-session.desktop')
+remove_file ('/usr/share/xsessions/lightdm-xsession.desktop')
 
