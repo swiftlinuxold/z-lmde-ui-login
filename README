@@ -1,0 +1,3 @@
+This is the repository for replacing the default GDM display manager with the lightweight LightDM display manager.  GDM provides not only a login manager but also automatically gives the user necessary permissions to play audio and use other basic functions.  SLiM does not and requires excessive tweaking with groups just to make sure the sound works.  LightDM offers GDM's functionality but is lighter.
+
+Special thanks to Kendall Weaver (Peppermint OS and Linux Mint's Fluxbox edition) for suggesting LightDM as an alternative to GDM and SLiM.
