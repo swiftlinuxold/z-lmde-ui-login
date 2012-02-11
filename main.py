@@ -30,10 +30,12 @@ else:
 os.system('apt-get purge -y gdm3')
 
 # Install LightDM
-os.system('apt-get install -y lightdm')
+os.system('apt-get install -y lightdm lightdm-gtk-greeter')
 
 # ============================
 # Configure LightDM
+# http://arcticdog.wordpress.com/2012/02/08/customising-the-lightdm-gtk-greeter/
+
 import shutil
 
 def remove_file (filename):
@@ -42,5 +44,13 @@ def remove_file (filename):
 
 # Remove extra sessions
 remove_file ('/usr/share/xsessions/icewm-session.desktop')
-remove_file ('/usr/share/xsessions/lightdm-xsession.desktop')
 
+# Change the LightDM wallpaper
+src = dir_develop + '/ui-login/etc_lightdm/lightdm-gtk-greeter.conf'
+dest = '/etc/lightdm/lightdm-gtk-greeter.conf'
+shutil.copyfile(src, dest)
+
+# Change the LightDM login box
+src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
+dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
+shutil.copyfile(src, dest)
