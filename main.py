@@ -50,6 +50,11 @@ src = dir_develop + '/ui-login/etc_lightdm/lightdm-gtk-greeter.conf'
 dest = '/etc/lightdm/lightdm-gtk-greeter.conf'
 shutil.copyfile(src, dest)
 
+# Auto-login as user 'mint'
+src = dir_develop + '/ui-login/etc_lightdm/lightdm.conf'
+dest = '/etc/lightdm/lightdm.conf'
+shutil.copyfile(src, dest)
+
 # Change the LightDM login box
 src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
 dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
