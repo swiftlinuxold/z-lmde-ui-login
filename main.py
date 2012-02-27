@@ -59,3 +59,4 @@ shutil.copyfile(src, dest)
 src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
 dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
 shutil.copyfile(src, dest)
+
