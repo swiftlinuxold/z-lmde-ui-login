@@ -1,0 +1,3 @@
+Settings changed in greeter.ui file
+Line 30: changed to False to remove the logo at the top of the login box
+Line 43: changed to False to remove the hostname in the login box

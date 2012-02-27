@@ -1,0 +1,2 @@
+lightdm-gtk-greeter.conf: Changed the background image
+lightdm.conf: Added auto-login settings
