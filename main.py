@@ -55,6 +55,11 @@ src = dir_develop + '/ui-login/etc_lightdm/lightdm.conf'
 dest = '/etc/lightdm/lightdm.conf'
 shutil.copyfile(src, dest)
 
+# Implement auto-login (copied from the GDM autologin file)
+src = dir_develop + '/ui-login/etc_pam.d/lightdm-autologin'
+dest = '/etc/pam.d/lightdm-autologin'
+shutil.copyfile(src, dest)
+
 # Change the LightDM login box
 src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
 dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
