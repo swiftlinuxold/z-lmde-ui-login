@@ -25,12 +25,17 @@ else:
 # =================================================================================
 
 # THIS IS THE SCRIPT FOR REPLACING THE DEFAULT LMDE DISPLAY MANAGER WITH A LIGHTER ONE.
+os.system ('echo ===============================')
+os.system ('echo BEGIN REPLACING DISPLAY MANAGER')
 
 # Remove GDM
-os.system('apt-get purge -y gdm3')
+os.system ('PURGING gdm3')
+os.system ('apt-get purge -qq gdm3')
 
 # Install LightDM
-os.system('apt-get install -y lightdm lightdm-gtk-greeter')
+os.system ('INSTALLING lightdm')
+os.system ('apt-get install -qq lightdm lightdm-gtk-greeter')
+os.system ('dpkg-reconfigure lightdm')
 
 # ============================
 # Configure LightDM
@@ -65,3 +70,6 @@ src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
 dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
 shutil.copyfile(src, dest)
 
+
+os.system ('echo FINISHED REPLACING DISPLAY MANAGER')
+os.system ('echo ==================================')
