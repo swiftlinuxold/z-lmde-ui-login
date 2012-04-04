@@ -24,16 +24,19 @@ else:
 # Everything up to this point is common to all Python scripts called by shared-*.sh
 # =================================================================================
 
+def message (string):
+    os.system ('echo ' + string)
+
 # THIS IS THE SCRIPT FOR REPLACING THE DEFAULT LMDE DISPLAY MANAGER WITH A LIGHTER ONE.
-os.system ('echo ===============================')
-os.system ('echo BEGIN REPLACING DISPLAY MANAGER')
+message ('===============================')
+message ('BEGIN REPLACING DISPLAY MANAGER')
 
 # Remove GDM
-os.system ('PURGING gdm3')
+message ('PURGING gdm3')
 os.system ('apt-get purge -qq gdm3')
 
 # Install LightDM
-os.system ('INSTALLING lightdm')
+message ('INSTALLING lightdm and lightdm-gtk-greeter')
 os.system ('apt-get install -qq lightdm lightdm-gtk-greeter')
 os.system ('dpkg-reconfigure lightdm')
 
@@ -48,28 +51,33 @@ def remove_file (filename):
         os.remove(filename)
 
 # Remove extra sessions
+message ('REMOVING /usr/share/xsessions/icewm-session.desktop')
 remove_file ('/usr/share/xsessions/icewm-session.desktop')
 
 # Change the LightDM wallpaper
 src = dir_develop + '/ui-login/etc_lightdm/lightdm-gtk-greeter.conf'
 dest = '/etc/lightdm/lightdm-gtk-greeter.conf'
+message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
 
 # Auto-login as user 'mint'
 src = dir_develop + '/ui-login/etc_lightdm/lightdm.conf'
 dest = '/etc/lightdm/lightdm.conf'
+message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
 
 # Implement auto-login (copied from the GDM autologin file)
 src = dir_develop + '/ui-login/etc_pam.d/lightdm-autologin'
 dest = '/etc/pam.d/lightdm-autologin'
+message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
 
 # Change the LightDM login box
 src = dir_develop + '/ui-login/usr_share_lightdm-gtk-greeter/greeter.ui'
 dest = '/usr/share/lightdm-gtk-greeter/greeter.ui'
+message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
 
 
-os.system ('echo FINISHED REPLACING DISPLAY MANAGER')
-os.system ('echo ==================================')
+message ('FINISHED REPLACING DISPLAY MANAGER')
+message ('==================================')
