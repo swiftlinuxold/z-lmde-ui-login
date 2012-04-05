@@ -31,10 +31,6 @@ def message (string):
 message ('===============================')
 message ('BEGIN REPLACING DISPLAY MANAGER')
 
-# Remove GDM
-message ('PURGING gdm3')
-os.system ('apt-get purge -qq gdm3')
-
 # Install LightDM
 message ('INSTALLING lightdm and lightdm-gtk-greeter')
 os.system ('apt-get install -qq lightdm lightdm-gtk-greeter')
