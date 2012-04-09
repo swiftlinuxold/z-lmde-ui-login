@@ -74,10 +74,11 @@ message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
 
 # Disable auto-login if not in chroot mode
-filename = '/etc/lightdm/lightdm.conf'
-text_old = '\nautologin'
-text_new = '\n# autologin'
-change_text (filename, text_old, text_new)
+if (not (is_chroot)):
+    filename = '/etc/lightdm/lightdm.conf'
+    text_old = '\nautologin'
+    text_new = '\n# autologin'
+    change_text (filename, text_old, text_new)
 
 # Implement auto-login (copied from the GDM autologin file)
 src = dir_develop + '/ui-login/etc_pam.d/lightdm-autologin'
