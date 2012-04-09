@@ -27,6 +27,12 @@ else:
 def message (string):
     os.system ('echo ' + string)
 
+# Replace text in a file        
+def change_text (filename, text_old, text_new):
+    text=open(filename, 'r').read()
+    text = text.replace(text_old, text_new)
+    open(filename, "w").write(text)
+
 # THIS IS THE SCRIPT FOR REPLACING THE DEFAULT LMDE DISPLAY MANAGER WITH A LIGHTER ONE.
 message ('===============================')
 message ('BEGIN REPLACING DISPLAY MANAGER')
@@ -66,6 +72,12 @@ src = dir_develop + '/ui-login/etc_lightdm/lightdm.conf'
 dest = '/etc/lightdm/lightdm.conf'
 message ('REPLACING ' + dest)
 shutil.copyfile(src, dest)
+
+# Disable auto-login if not in chroot mode
+filename = '/etc/lightdm/lightdm.conf'
+text_old = '\nautologin'
+text_new = '\n# autologin'
+change_text (filename, text_old, text_new)
 
 # Implement auto-login (copied from the GDM autologin file)
 src = dir_develop + '/ui-login/etc_pam.d/lightdm-autologin'
