@@ -57,10 +57,6 @@ def remove_file (filename):
     if (os.path.exists(filename)):
         os.remove(filename)
 
-# Remove extra sessions
-message ('REMOVING /usr/share/xsessions/icewm-session.desktop')
-remove_file ('/usr/share/xsessions/icewm-session.desktop')
-
 # Change the LightDM wallpaper
 src = dir_develop + '/ui-login/etc_lightdm/lightdm-gtk-greeter.conf'
 dest = '/etc/lightdm/lightdm-gtk-greeter.conf'
