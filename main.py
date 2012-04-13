@@ -37,11 +37,6 @@ def change_text (filename, text_old, text_new):
 message ('===============================')
 message ('BEGIN REPLACING DISPLAY MANAGER')
 
-# Purge GDM before purging libweather-common to avoid being asked about what to do with
-# files in /etc/gdm3
-message ('PURGING gdm3')
-os.system ('apt-get purge -qq gdm3')
-
 # Install LightDM
 message ('INSTALLING lightdm and lightdm-gtk-greeter')
 os.system ('apt-get install -qq lightdm lightdm-gtk-greeter')
